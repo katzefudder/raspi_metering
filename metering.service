@@ -1,0 +1,14 @@
+[Unit]
+Description=Log light intensity, temperature and humidity to Graphite
+After=multi-user.target
+
+[Service]
+Type=idle
+WorkingDirectory=/home/pi/metering
+ExecStart=/home/pi/metering/metering.py > /var/log/metering.log 2>&1
+StandardOutput=syslog
+StandardError=syslog
+SyslogIdentifier=metering
+
+[Install]
+WantedBy=multi-user.target
